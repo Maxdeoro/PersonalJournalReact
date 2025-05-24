@@ -1,5 +1,6 @@
 import './App.css';
 import Button from './components/button/Button';
+import JournalItem from './components/journalItem/JournalItem';
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <div>NEW PROJECT</div>
       <Button></Button>
+      <JournalItem></JournalItem>
     </>
   )
 }
