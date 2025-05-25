@@ -29,6 +29,8 @@ export default [
         { allowConstantExport: true },
       ],
       'semi': ['error', 'always', {'omitLastIOneLineBlock': false}],
+      'react/prop-types': [0],
+      'indent': ['error', 'tab'],
     },
   },
 ]
