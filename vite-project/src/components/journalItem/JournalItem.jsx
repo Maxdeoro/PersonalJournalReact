@@ -1,9 +1,6 @@
 import './JournalItem.css';
 
-function JournalItem() {
-    const title = 'Preparing to update courses';
-    const date = new Date();
-    const text = 'Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.';
+function JournalItem({title, text, date}) {
 
     return (
         <div className='journal-item'>
