@@ -3,7 +3,11 @@ import CardButton from '../cardButton/CardButton';
 
 function NewPostButton() {
     return (
-        <CardButton className='new-post-button'>+ New Post</CardButton>
+        <div className='new-post-block'>
+            <CardButton className='new-post-button'>
+                <img src='/plus.svg' className='plus' alt='+'/>New Post
+            </CardButton>
+        </div>
     );
 };
 

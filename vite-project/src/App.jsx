@@ -1,5 +1,4 @@
 import './App.css';
-import Button from './components/button/Button';
 import JournalItem from './components/journalItem/JournalItem';
 import CardButton from './components/cardButton/CardButton';
 import LeftPanel from '../layout/leftPanel/LeftPanel';
@@ -39,15 +38,6 @@ function App() {
       <Body>
         BODY
       </Body>
-      {/* <div className="leftHeader">Personal Journal</div> */}
-      {/* <Button></Button> */}
-      {/* <CardButton> + New Post</CardButton> */}
-      {/* <CardButton>
-        <JournalItem title={data[0].title} text={data[0].text} date={data[0].date}/>
-      </CardButton> */}
-      {/* <CardButton>
-        <JournalItem title={data[1].title} text={data[1].text} date={data[1].date}/>
-      </CardButton> */}
     </div>
   )
 }
