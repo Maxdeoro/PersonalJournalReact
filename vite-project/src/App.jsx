@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import JournalItem from './components/journalItem/JournalItem';
 import CardButton from './components/cardButton/CardButton';
 import LeftPanel from '../layout/leftPanel/LeftPanel';
@@ -8,6 +9,7 @@ import JournalList from './components/journalList/JournalList';
 import NewPostButton from './components/newPostButton/NewPostButton';
 
 function App() {
+
   const data = [
     {
       title: 'Preparing to update courses',
@@ -20,10 +22,13 @@ function App() {
       date: new Date(),
     },
   ];
+  
+  const [inputData, setInputData] = useState('');
 
   const inputChange = (event) => {
     const inputValue = event.target.value;
     console.log(inputValue);
+    setInputData(inputValue);
   };
 
   return (
@@ -41,7 +46,7 @@ function App() {
         </JournalList>
       </LeftPanel>
       <Body>
-        <input type='text' onChange={inputChange}/>
+        <input type='text' value={inputData} onChange={inputChange}/>
       </Body>
     </div>
   )
