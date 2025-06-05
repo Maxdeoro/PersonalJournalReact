@@ -29,14 +29,11 @@ function JournalForm({onSubmit}) {
       // isFormValid = false;
     } else {
       setFormValidState(state => ({...state, date: true}));
-      // isFormValid = true;
     }
     if(!formProps.text?.trim().length) {
       setFormValidState(state => ({...state, text: false}));
-      // isFormValid = false;
     } else {
       setFormValidState(state => ({...state, text: true}));
-      // isFormValid = true;
     }
     if(!isFormValid) return;
 
@@ -46,12 +43,12 @@ function JournalForm({onSubmit}) {
     return ( 
         <form className='journal-form' onSubmit={addJournalItem}>
             <input type='title' name='title' placeholder='Title' 
-                  style={{border: formValidState.title ? undefined : '2px solid red'}}/>
+                  className={`input ${formValidState.title ? '' : 'invalid'}`}/>
             <input type='date' name='date' 
-                  style={{border: formValidState.date ? undefined : '2px solid red'}}/>
+                  className={`input ${formValidState.date ? '' : 'invalid'}`}/>
             <input type='text' name='tag' placeholder='Tag'/>
             <textarea name='text' rows='10' placeholder='Write here' 
-                  style={{border: formValidState.text ? undefined : '2px solid red'}}></textarea>
+                  className={`input ${formValidState.text ? '' : 'invalid'}`}></textarea>
             <Button text='Save'/>
         </form>    
     );
