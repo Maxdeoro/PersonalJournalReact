@@ -1,10 +1,10 @@
-import './header.css';
+import styles from './Header.module.css';
 
 function Header() {
     return (
-        <div className="header">
-            <img className='logo' src='/logo.svg' alt='Logo'/>
-            <div className='logo-text'>My Personal Journal</div>
+        <div className={styles.header}>
+            <img className={styles.logo} src='/logo.svg' alt='Logo'/>
+            <div className={styles.logoText}>My Personal Journal</div>
         </div>
     );
 };
