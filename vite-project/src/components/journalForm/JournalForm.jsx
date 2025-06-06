@@ -1,6 +1,7 @@
 import styles from './JournalForm.module.css';
 import { useState } from 'react';
 import Button from '../button/Button';
+import cn from 'classnames';
 
 function JournalForm({onSubmit}) {
 
@@ -39,14 +40,24 @@ function JournalForm({onSubmit}) {
   };
 
     return ( 
-        <form className={styles['journalForm']} onSubmit={addJournalItem}>
+        <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
+        {/* <form className={styles['journalForm']} onSubmit={addJournalItem}> */}
             <input type='title' name='title' placeholder='Title' 
-                  className={`${styles['input']} ${formValidState.title ? '' : styles['invalid']}`}/>
+                  className={cn(styles['input'], {
+                    [styles['invalid']]: !formValidState.title,
+                  })}/>
+                  {/* className={`${styles['input']} ${formValidState.title ? '' : styles['invalid']}`}/> */}
             <input type='date' name='date' 
-                  className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}/>
+                  className={cn(styles['input'], {
+                    [styles['invalid']]: !formValidState.date,
+                  })}/>
+                  {/* className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}/> */}
             <input type='text' name='tag' placeholder='Tag'/>
             <textarea name='text' rows='10' placeholder='Write here' 
-                  className={`${styles['input']} ${formValidState.text ? '' : styles['invalid']}`}></textarea>
+                  className={cn(styles['textarea'], {
+                    [styles['invalid']]: !formValidState.text,
+                  })}></textarea>
+                  {/* className={`${styles['input']} ${formValidState.text ? '' : styles['invalid']}`}></textarea> */}
             <Button text='Save'/>
         </form>    
     );
