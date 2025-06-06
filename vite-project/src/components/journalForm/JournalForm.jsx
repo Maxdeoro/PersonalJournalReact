@@ -41,23 +41,35 @@ function JournalForm({onSubmit}) {
 
     return ( 
         <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
-        {/* <form className={styles['journalForm']} onSubmit={addJournalItem}> */}
-            <input type='title' name='title' placeholder='Title' 
-                  className={cn(styles['input'], {
+            <div>
+              <input type='title' name='title' placeholder='Title' 
+                  className={cn(styles['input-title'], {
                     [styles['invalid']]: !formValidState.title,
-                  })}/>
-                  {/* className={`${styles['input']} ${formValidState.title ? '' : styles['invalid']}`}/> */}
-            <input type='date' name='date' 
+                 })}/>
+            </div>
+            <div className={cn(styles['form-row'])}>
+              <label for='date' className={cn(styles['form-label'])}>
+                <img src='/calendar.svg' alt='date-icon'></img>
+                <span>Date</span>
+              </label>
+              <input type='date' id='date' name='date' 
                   className={cn(styles['input'], {
                     [styles['invalid']]: !formValidState.date,
                   })}/>
-                  {/* className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}/> */}
-            <input type='text' name='tag' placeholder='Tag'/>
+            </div>
+            <div className={cn(styles['form-row'])}>
+              <label for='tag' className={cn(styles['form-label'])}>
+                <img src='/folder.svg' alt='tag-icon'></img>
+                <span>Tag</span>
+              </label>
+              <input type='text' id='tag' name='tag' placeholder='Tag' className={
+                cn(styles['input'])
+              }/>
+            </div>
             <textarea name='text' rows='10' placeholder='Write here' 
-                  className={cn(styles['textarea'], {
+                  className={cn(styles['input'], {
                     [styles['invalid']]: !formValidState.text,
                   })}></textarea>
-                  {/* className={`${styles['input']} ${formValidState.text ? '' : styles['invalid']}`}></textarea> */}
             <Button text='Save'/>
         </form>    
     );
