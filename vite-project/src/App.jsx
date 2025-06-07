@@ -7,7 +7,7 @@ import Header from './components/header/Header';
 import JournalList from './components/journalList/JournalList';
 import NewPostButton from './components/newPostButton/NewPostButton';
 import JournalForm from './components/journalForm/JournalForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const INITIAL_DATA = [
     // {
@@ -26,16 +26,17 @@ const INITIAL_DATA = [
 
 function App() {
 
-  const [items, setItems] = useState(INITIAL_DATA);
+  const [items, setItems] = useState([]);
 
-  // const addItem = (item) => {
-  //   setItems(oldItems => [...oldItems, {
-  //     text: item.text,
-  //     title: item.title,
-  //     date: new Date(item.date),
-  //     id: Math.max(...oldItems.map(i => i.id)) + 1,   // find max id and add 1 to create new id
-  //   }]);
-  // };
+  useEffect(() => {
+  const data = JSON.parse(localStorage.getItem('data'));
+  if(data) {
+    setItems(data.map(item => ({
+      ...item,
+      date: new Date(item.date),
+    })));
+  }
+}, []);
 
   const addItem = (item) => {
   setItems(oldItems => {
