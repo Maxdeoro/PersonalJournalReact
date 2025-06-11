@@ -26,7 +26,14 @@ function JournalForm({onSubmit}) {
       onSubmit(values);
       dispatchForm({type: 'CLEAR'});
     }
-  }, [isFormReadyToSubmit]);
+  }, [isFormReadyToSubmit, values, onSubmit]);
+
+  // useEffect(() => {
+  //   if(isFormReadyToSubmit) {
+  //     onSubmit(values);
+  //     dispatchForm({type: 'CLEAR'});
+  //   }
+  // }, [isFormReadyToSubmit]);
 
   const onChange = (e) => {
     dispatchForm({type: 'SET_VALUE',
