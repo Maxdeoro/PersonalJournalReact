@@ -3,6 +3,7 @@ import { useEffect, useReducer, useRef } from 'react';
 import Button from '../button/Button';
 import cn from 'classnames';
 import { INITIAL_STATE, formReducer } from './JournalForm.state';
+import Input from '../input/Input';
 
 function JournalForm({onSubmit}) {
 
@@ -60,33 +61,32 @@ function JournalForm({onSubmit}) {
     return ( 
         <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
             <div>
-              <input value={values.title} ref={titleRef} type='title' name='title' 
+              <Input value={values.title} ref={titleRef} type='title' name='title'
+                  isValid={isValid.title}
+                  appearance='title' 
                   placeholder='Title'
                   onChange={onChange} 
-                  className={cn(styles['input-title'], {
-                    [styles['invalid']]: !isValid.title,
-                 })}/>
+              />
             </div>
             <div className={cn(styles['form-row'])}>
               <label htmlFor='date' className={cn(styles['form-label'])}>
                 <img src='/calendar.svg' alt='date-icon'></img>
                 <span>Date</span>
               </label>
-              <input value={values.data} ref={dateRef} type='date' id='date' name='date' 
+              <Input value={values.data} ref={dateRef} type='date' id='date' name='date' 
+                  isValid={isValid.date} 
                   onChange={onChange}
-                  className={cn(styles['input'], {
-                    [styles['invalid']]: !isValid.date,
-                  })}/>
+              />
             </div>
             <div className={cn(styles['form-row'])}>
               <label htmlFor='tag' className={cn(styles['form-label'])}>
                 <img src='/folder.svg' alt='tag-icon'></img>
                 <span>Tag</span>
               </label>
-              <input type='text' value={values.tag} id='tag' name='tag' placeholder='Tag' 
+              <Input type='text' value={values.tag} id='tag' name='tag' placeholder='Tag' 
                   onChange={onChange} 
-                  className={cn(styles['input'])
-              }/>
+                  className={cn(styles['input'])}
+              />
             </div>
             <textarea name='text' value={values.text} rows='10' ref={textRef} 
                   placeholder='Write here' 
