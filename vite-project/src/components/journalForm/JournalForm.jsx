@@ -4,6 +4,7 @@ import Button from '../button/Button';
 import cn from 'classnames';
 import { INITIAL_STATE, formReducer } from './JournalForm.state';
 import Input from '../input/Input';
+import { UserContext } from '../../context/context.user';
 
 function JournalForm({onSubmit}) {
 
@@ -59,7 +60,10 @@ function JournalForm({onSubmit}) {
   };
 
     return ( 
-        <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
+      <UserContext.Consumer>
+        {(context) => (
+          <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
+            {context.userId}
             <div>
               <Input value={values.title} ref={titleRef} type='title' name='title'
                   isValid={isValid.title}
@@ -95,7 +99,9 @@ function JournalForm({onSubmit}) {
                     [styles['invalid']]: !isValid.text,
                   })}></textarea>
             <Button text='Save'/>
-        </form>    
+        </form> 
+        )}
+      </UserContext.Consumer>
     );
 };
 
