@@ -9,6 +9,7 @@ import NewPostButton from './components/newPostButton/NewPostButton';
 import JournalForm from './components/journalForm/JournalForm';
 import { useLocalStorage } from './hooks/useLocalStorage.hook';
 import { UserContext } from './context/context.user';
+import { useState } from 'react';
 
 function mapItems(items) {
   if(!items) {
@@ -23,6 +24,7 @@ function mapItems(items) {
 function App() {
 
   const [items, setItems] = useLocalStorage('data');
+  const [userId, setUserId] = useState(2);
 
   const addItem = (item) => {
   setItems( [...mapItems(items), {
@@ -35,7 +37,7 @@ function App() {
 };
 
   return (
-    <UserContext.Provider value={{userId: 1}}>
+    <UserContext.Provider value={{userId, setUserId}}>
       <div className='app'>
         <LeftPanel>
           <Header/>
