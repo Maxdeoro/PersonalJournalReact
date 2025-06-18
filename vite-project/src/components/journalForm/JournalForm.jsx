@@ -49,6 +49,10 @@ function JournalForm({onSubmit}) {
     }
   }, [isFormReadyToSubmit, values, onSubmit]);
 
+  useEffect(() => {
+    dispatchForm({type: 'SET_VALUE', payload: {userId: userId}});
+  }, [userId]);
+
   const onChange = (e) => {
     dispatchForm({type: 'SET_VALUE',
                   payload: {[e.target.name]: e.target.value},
@@ -62,7 +66,6 @@ function JournalForm({onSubmit}) {
 
     return ( 
       <form className={cn(styles['form', 'journalForm'])} onSubmit={addJournalItem}>
-            {userId}
             <div>
               <Input value={values.title} ref={titleRef} type='title' name='title'
                   isValid={isValid.title}
