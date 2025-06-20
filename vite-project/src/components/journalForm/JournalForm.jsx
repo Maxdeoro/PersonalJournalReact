@@ -100,7 +100,7 @@ function JournalForm({onSubmit}) {
                   className={cn(styles['input'], {
                     [styles['invalid']]: !isValid.text,
                   })}></textarea>
-            <Button text='Save'/>
+            <Button>Save</Button>
         </form> 
     );
 };

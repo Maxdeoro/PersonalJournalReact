@@ -1,9 +1,9 @@
 import styles from './Button.module.css';
 
-function Button({text, onClick}) {
+function Button({children, onClick}) {
 
   return (
-    <button onClick={onClick} className={`${styles.button} ${styles.accent}`}>{text}</button>
+    <button onClick={onClick} className={`${styles.button} ${styles.accent}`}>{children}</button>
   )
 }
 
