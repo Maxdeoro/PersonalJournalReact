@@ -2,6 +2,7 @@ import styles from './Header.module.css';
 import SelectUser from '../selectUser/SelectUser';
 import Button from '../button/Button';
 import {useState } from 'react';
+import Logo from '../logo/Logo';
 
 const logos = ['./logo.svg', './vite.svg'];
  
@@ -15,7 +16,8 @@ function Header() {
 
     return (
         <div className={styles.header}>
-            <img className={styles.logo} src={logos[logoIndex]} alt='Logo'/>
+            <Logo image={logos[logoIndex]}/>
+            {/* <img className={styles.logo} src={logos[logoIndex]} alt='Logo'/> */}
             <div className={styles.logoText}>My Personal Journal</div>
             <SelectUser />
             <Button onClick={toggleLogo}>Change logo</Button>
