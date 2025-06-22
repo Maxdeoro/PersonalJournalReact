@@ -16,7 +16,8 @@ function Header() {
 
     return (
         <div className={styles.header}>
-            <Logo image={logos[logoIndex]}/>
+            <Logo image={logos[0]}/>
+            {/* <Logo image={logos[logoIndex]}/> */}
             {/* <img className={styles.logo} src={logos[logoIndex]} alt='Logo'/> */}
             <div className={styles.logoText}>My Personal Journal</div>
             <SelectUser />
