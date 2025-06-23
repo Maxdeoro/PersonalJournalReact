@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
 import SelectUser from '../selectUser/SelectUser';
 import Button from '../button/Button';
-import {useState, useCallback } from 'react';
+import { useState } from 'react';
 import Logo from '../logo/Logo';
 
 const logos = ['./logo.svg', './vite.svg'];
@@ -10,9 +10,9 @@ function Header() {
 
     const [logoIndex, setLogoIndex] = useState(0);
 
-    const toggleLogo = useCallback(() => {
+    const toggleLogo = () => {
         setLogoIndex(state => Number(!state));
-    });
+    };
 
     return (
         <div className={styles.header}>
