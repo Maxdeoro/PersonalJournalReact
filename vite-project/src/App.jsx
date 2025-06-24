@@ -7,6 +7,7 @@ import NewPostButton from './components/newPostButton/NewPostButton';
 import JournalForm from './components/journalForm/JournalForm';
 import { useLocalStorage } from './hooks/useLocalStorage.hook';
 import { UserContextProvider } from './context/context.user';
+import { useState } from 'react';
 
 function mapItems(items) {
   if(!items) {
@@ -21,25 +22,28 @@ function mapItems(items) {
 function App() {
 
   const [items, setItems] = useLocalStorage('data');
+  const [selectedItem, setSelectedItem] = useState({});
 
-  // const addItem = (item) => {
-  // setItems( [...mapItems(items), {
-      // text: item.text,
-      // title: item.title,
-//       ...item,
-//       date: new Date(item.date),
-//       id: items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1,
-//     }]
-//   );
-// };
-const addItem = (item) => {
-  const mappedItems = mapItems(items);
-  setItems([...mappedItems, {
-    ...item,
-    date: new Date(item.date),
-    id: mappedItems.length > 0 ? Math.max(...mappedItems.map(i => i.id)) + 1 : 1,
-  }]);
-};
+  const addItem = (item) => {
+    if (!item.id) {
+      const mappedItems = mapItems(items);
+      setItems([...mappedItems, {
+        ...item,
+        date: new Date(item.date),
+        id: mappedItems.length > 0 ? Math.max(...mappedItems.map(i => i.id)) + 1 : 1,
+      }]);
+    } else {
+      const mappedItems = mapItems(items);
+      setItems([...mappedItems.map(i => {
+        if (i.id === item.id) {
+          return {
+            ...item,
+          };
+        }
+        return i;
+      })]);
+    }
+  };
 
   return (
     <UserContextProvider>
@@ -47,10 +51,10 @@ const addItem = (item) => {
         <LeftPanel>
           <Header/>
           <NewPostButton/>
-          <JournalList items={mapItems(items)}/>
+          <JournalList items={mapItems(items)} setItem={setSelectedItem}/>
         </LeftPanel>
         <Body>
-          <JournalForm onSubmit={addItem}/>
+          <JournalForm onSubmit={addItem} data={selectedItem}/>
         </Body>
       </div>
     </UserContextProvider>

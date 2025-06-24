@@ -20,7 +20,7 @@ function Header() {
             {/* <Logo image={logos[logoIndex]}/> */}
             <div className={styles.logoText}>My Personal Journal</div>
             <SelectUser />
-            <Button onClick={toggleLogo}>Change logo</Button>
+            {/* <Button onClick={toggleLogo}>Change logo</Button> */}
         </div>
     );
 };
