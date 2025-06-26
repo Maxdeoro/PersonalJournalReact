@@ -21,3 +21,14 @@
     border: 1px solid red;
     background: rgb(174, 73, 73);
 }
+
+.delete {
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    border-radius: 30%;
+    padding: 0;
+}
+
+.delete:hover {
+    background: rgb(255, 255, 255, 0.5);
+}

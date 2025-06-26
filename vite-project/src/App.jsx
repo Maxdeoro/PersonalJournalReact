@@ -22,18 +22,18 @@ function mapItems(items) {
 function App() {
 
   const [items, setItems] = useLocalStorage('data');
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const mappedItems = mapItems(items);
 
   const addItem = (item) => {
     if (!item.id) {
-      const mappedItems = mapItems(items);
       setItems([...mappedItems, {
         ...item,
         date: new Date(item.date),
-        id: mappedItems.length > 0 ? Math.max(...mappedItems.map(i => i.id)) + 1 : 1,
+        id: items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1,
       }]);
     } else {
-      const mappedItems = mapItems(items);
       setItems([...mappedItems.map(i => {
         if (i.id === item.id) {
           return {
@@ -45,16 +45,20 @@ function App() {
     }
   };
 
+  const deleteItem = (id) => {
+    setItems([...items.filter(i => i.id !== id)]);
+  };
+
   return (
     <UserContextProvider>
       <div className='app'>
         <LeftPanel>
           <Header/>
-          <NewPostButton/>
+          <NewPostButton clearForm={() => setSelectedItem(null)}/>
           <JournalList items={mapItems(items)} setItem={setSelectedItem}/>
         </LeftPanel>
         <Body>
-          <JournalForm onSubmit={addItem} data={selectedItem}/>
+          <JournalForm onSubmit={addItem} data={selectedItem} onDelete={deleteItem}/>
         </Body>
       </div>
     </UserContextProvider>

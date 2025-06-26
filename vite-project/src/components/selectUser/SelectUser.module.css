@@ -1,4 +1,9 @@
-.userSelect {
-    /* min-width: 400px; */
-    display: flex;
+.select {
+    padding: 10px;
+    background: none;
+    border: 1px solid #323232;
+}
+
+option {
+    background: #614d4d;
 }

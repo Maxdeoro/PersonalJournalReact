@@ -12,7 +12,7 @@ function SelectUser() {
 
     return (
         <select name='user' id='user' onChange={changeUser} value={userId} 
-                className={`${styles.userSelect}`}>
+                className={styles['select']}>
             <option value='1'>Victor</option>
             <option value='2'>Diana</option>
         </select>
